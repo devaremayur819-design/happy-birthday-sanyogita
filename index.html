@@ -4,88 +4,353 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Dr. Sanyogita ❤️</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
+
 height:100vh;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff5fa2,#ff9ecf,#ffd8e8);
-font-family:Arial,sans-serif;
-overflow:hidden;
+background:linear-gradient(-45deg,
+#ff4d8d,
+#ff8db7,
+#ffc4d6,
+#ffdfe9);
+
+background-size:400% 400%;
+
+animation:bg 12s ease infinite;
+
 }
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
 .card{
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(12px);
-padding:30px;
-border-radius:20px;
-text-align:center;
+
 width:90%;
-max-width:420px;
+max-width:430px;
+
+padding:30px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(12px);
+
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+text-align:center;
+
 color:white;
-box-shadow:0 15px 30px rgba(0,0,0,.3);
+
+animation:pop 1.2s;
+
 }
+
+@keyframes pop{
+
+0%{
+
+opacity:0;
+
+transform:scale(.7);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
 h1{
+
 font-size:34px;
-margin-bottom:15px;
+
+margin-bottom:12px;
+
 }
+
+h2{
+
+margin-bottom:20px;
+
+font-weight:400;
+
+}
+
 p{
+
 font-size:18px;
+
 line-height:1.7;
+
 }
+
 button{
+
 margin-top:25px;
-padding:14px 28px;
+
+padding:14px 32px;
+
 border:none;
-border-radius:30px;
+
+border-radius:50px;
+
 background:white;
+
 color:#ff2d75;
+
 font-size:18px;
+
 font-weight:bold;
+
 cursor:pointer;
+
+transition:.3s;
+
 }
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
 .heart{
+
 position:absolute;
-font-size:22px;
-animation:float 8s linear infinite;
+
+bottom:-40px;
+
+animation:float linear infinite;
+
+pointer-events:none;
+
+opacity:.9;
+
 }
+
 @keyframes float{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-120vh);}
+
+0%{
+
+transform:translateY(0);
+
+opacity:0;
+
 }
+
+15%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+.loading{
+
+position:fixed;
+
+inset:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+background:#ff5a93;
+
+color:white;
+
+z-index:1000;
+
+transition:1s;
+
+}
+
+.loader{
+
+width:220px;
+
+height:10px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.3);
+
+margin-top:20px;
+
+overflow:hidden;
+
+}
+
+.bar{
+
+height:100%;
+
+width:0;
+
+background:white;
+
+animation:load 3s forwards;
+
+}
+
+@keyframes load{
+
+100%{
+
+width:100%;
+
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="card">
+<div class="loading" id="loading">
+
+<h2>Searching for...</h2>
+
+<h1>👩‍⚕️ Dr. Sanyogita ❤️</h1>
+
+<p>Birthday detected... 🎂</p>
+
+<div class="loader">
+
+<div class="bar"></div>
+
+</div>
+
+</div>
+
+<div class="card" id="home" style="display:none;">
+
 <h1>🎂 Happy Birthday</h1>
+
 <h2>Dr. Sanyogita ❤️</h2>
 
 <p>
+
 A little surprise made specially for you...
+
 </p>
 
-<button onclick="next()">
+<button onclick="openSurprise()">
+
 Open Surprise ❤️
+
+</button>
+
+</div>
+<div class="card" id="screen2" style="display:none;">
+
+<h1>🎉 Welcome</h1>
+
+<h2>Dr. Sanyogita ❤️</h2>
+
+<p>
+
+I have something special for you...
+
+But first,
+
+promise me you'll smile. 😊
+
+</p>
+
+<button onclick="alert('Part 2 Coming ❤️')">
+
+I Promise ❤️
+
 </button>
 
 </div>
 
 <script>
-for(let i=0;i<30;i++){
+
+setTimeout(()=>{
+
+document.getElementById("loading").style.opacity="0";
+
+setTimeout(()=>{
+
+document.getElementById("loading").style.display="none";
+
+document.getElementById("home").style.display="block";
+
+},900);
+
+},3000);
+
+for(let i=0;i<40;i++){
+
 let h=document.createElement("div");
-h.innerHTML="💖";
+
 h.className="heart";
+
+h.innerHTML=Math.random()>0.5?"💖":"✨";
+
 h.style.left=Math.random()*100+"vw";
-h.style.animationDelay=Math.random()*8+"s";
-h.style.fontSize=(20+Math.random()*20)+"px";
+
+h.style.animationDuration=(6+Math.random()*6)+"s";
+
+h.style.animationDelay=Math.random()*6+"s";
+
+h.style.fontSize=(18+Math.random()*22)+"px";
+
 document.body.appendChild(h);
+
 }
 
-function next(){
-alert("Part 2 Coming ❤️");
+function openSurprise(){
+
+document.getElementById("home").style.display="none";
+
+document.getElementById("screen2").style.display="block";
+
 }
+
 </script>
 
 </body>
