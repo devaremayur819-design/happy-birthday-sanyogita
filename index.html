@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Dr. Sanyogita ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff5fa2,#ff9ecf,#ffd8e8);
+font-family:Arial,sans-serif;
+overflow:hidden;
+}
+.card{
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:20px;
+text-align:center;
+width:90%;
+max-width:420px;
+color:white;
+box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+h1{
+font-size:34px;
+margin-bottom:15px;
+}
+p{
+font-size:18px;
+line-height:1.7;
+}
+button{
+margin-top:25px;
+padding:14px 28px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff2d75;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+.heart{
+position:absolute;
+font-size:22px;
+animation:float 8s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-120vh);}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h1>🎂 Happy Birthday</h1>
+<h2>Dr. Sanyogita ❤️</h2>
+
+<p>
+A little surprise made specially for you...
+</p>
+
+<button onclick="next()">
+Open Surprise ❤️
+</button>
+
+</div>
+
+<script>
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.innerHTML="💖";
+h.className="heart";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDelay=Math.random()*8+"s";
+h.style.fontSize=(20+Math.random()*20)+"px";
+document.body.appendChild(h);
+}
+
+function next(){
+alert("Part 2 Coming ❤️");
+}
+</script>
+
+</body>
+</html>
