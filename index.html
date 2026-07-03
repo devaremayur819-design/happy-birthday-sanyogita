@@ -2,148 +2,173 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday ❤️</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Dr. Sanyogita ❤️</title>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-background:linear-gradient(-45deg,#ff4d8d,#ff8db7,#ffc4d6,#ffdfe9);
-background-size:400% 400%;
-animation:bg 10s ease infinite;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-.card{
-width:90%;
-max-width:420px;
-padding:30px;
-border-radius:25px;
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(12px);
-box-shadow:0 15px 35px rgba(0,0,0,.25);
-text-align:center;
-color:white;
-animation:fade 1s;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-h1{
-font-size:35px;
-margin-bottom:15px;
-}
-
-p{
-font-size:18px;
-line-height:1.7;
-margin-top:15px;
-}
-
-button{
-margin-top:25px;
-padding:14px 28px;
-border:none;
-border-radius:40px;
-font-size:18px;
-background:white;
-color:#ff2d75;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.08);
-}
-
-.heart{
-position:absolute;
-bottom:-30px;
-font-size:24px;
-animation:float linear infinite;
-}
-
-@keyframes float{
-0%{
-transform:translateY(0);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{overflow:hidden;height:100vh;background:linear-gradient(135deg,#ff8ec7,#ff5ca8,#ffc7df)}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.heart,.conf{position:absolute;animation:float linear infinite}
+.heart:before{content:"❤";font-size:20px;color:#fff8}
+.conf{width:8px;height:8px;border-radius:2px}
+@keyframes float{from{transform:translateY(110vh) rotate(0)}to{transform:translateY(-15vh) rotate(360deg)}}
+.screen{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;padding:20px;opacity:0;transform:translateX(100%);transition:.7s}
+.show{opacity:1;transform:translateX(0)}
+.card{width:min(420px,95%);padding:28px;background:#ffffff22;border:1px solid #ffffff55;border-radius:25px;backdrop-filter:blur(18px);text-align:center;color:#fff;box-shadow:0 10px 35px #0002}
+h1,h2{margin-bottom:18px}
+p{line-height:1.7;white-space:pre-wrap}
+button{margin:8px;padding:12px 24px;border:none;border-radius:30px;font-size:16px;font-weight:bold;background:#fff;color:#ff2d7a;cursor:pointer;transition:.25s}
+button:hover{transform:scale(1.06)}
+#letter{text-align:left;min-height:320px}
+#next{display:none}
+.pop{position:fixed;inset:0;background:#0006;display:none;justify-content:center;align-items:center;z-index:5}
+.pop .box{width:min(350px,90%);padding:25px;background:#fff;border-radius:20px;text-align:center;color:#ff2d7a}
+.pop button{background:#ff5ca8;color:#fff}
 </style>
-
 </head>
-
 <body>
 
+<div class="bg" id="bg"></div>
+
+<div class="screen show">
 <div class="card">
+<h1>🎉 Happy Birthday<br>Dr. Sanyogita ❤️</h1>
+<p>A tiny birthday check-up is waiting... 👩‍⚕️✨</p><br>
+<button onclick="go(1)">Open Surprise 🎁</button>
+</div>
+</div>
 
-<h1>🎂 Happy Birthday</h1>
+<div class="screen">
+<div class="card">
+<h2>Doctor... are you smiling right now? 😊🩺</h2>
+<button onclick="go(2)">😁 Yes, of course!</button>
+<button onclick="diag()">😶 No</button>
+</div>
+</div>
 
-<h2>Dr. Sanyogita ❤️</h2>
+<div class="screen">
+<div class="card">
+<h2>Have you made your birthday wish yet? 🎂✨</h2>
+<button onclick="go(3)">✨ Yes</button>
+<button onclick="pres()">🤫 No</button>
+</div>
+</div>
 
+<div class="screen">
+<div class="card">
+<h2>💌 Birthday Letter</h2>
+<p id="letter"></p>
+<button id="next" onclick="go(4)">Final Surprise ❤️</button>
+</div>
+</div>
+
+<div class="screen">
+<div class="card">
+<h1>🎉 Happy Birthday<br>Dr. Sanyogita ❤️</h1>
+<h3>Final Diagnosis 🩺</h3>
+<p>✅ Smile Successfully Restored 😌<br><br>
+Keep smiling...<br>
+and save one smile just for me. ❤️</p>
+<br>
+<h2>— From Mayur ❤️</h2>
+</div>
+</div>
+
+<div class="pop" id="d">
+<div class="box">
+<h2>🩺 Diagnosis Report</h2>
 <p>
-A little surprise made especially for you...
+Patient: Dr. Sanyogita
+
+Condition:
+Birthday Smile Deficiency Detected 🤭
+
+Treatment:
+Continue this surprise
+for 30 more seconds. ❤️
 </p>
+<br>
+<button onclick="closePop('d');go(2)">Fine... I'm smiling 😅</button>
+</div>
+</div>
 
-<button onclick="location.href='#slide2'">
-Open Surprise ❤️
-</button>
+<div class="pop" id="p">
+<div class="box">
+<h2>💊 Doctor's Prescription</h2>
+<p>
+✔ 1 Birthday Wish
 
+✔ 2 Big Smiles
+
+✔ Unlimited Happiness
+
+Take immediately.
+No excuses. ❤️
+</p>
+<br>
+<button onclick="closePop('p');go(3)">Done Doctor 😄</button>
+</div>
 </div>
 
 <script>
+const s=[...document.querySelectorAll(".screen")];
+function go(i){
+s.forEach(e=>e.classList.remove("show"));
+s[i].classList.add("show");
+if(i==3)type();
+if(i==4)confetti();
+}
+function diag(){document.getElementById("d").style.display="flex";}
+function pres(){document.getElementById("p").style.display="flex";}
+function closePop(id){document.getElementById(id).style.display="none";}
 
-for(let i=0;i<30;i++){
-
+for(let i=0;i<40;i++){
 let h=document.createElement("div");
-
 h.className="heart";
-
-h.innerHTML=Math.random()>0.5?"💖":"✨";
-
 h.style.left=Math.random()*100+"vw";
-
-h.style.animationDuration=(5+Math.random()*5)+"s";
-
-h.style.animationDelay=Math.random()*5+"s";
-
-document.body.appendChild(h);
-
+h.style.animationDuration=6+Math.random()*8+"s";
+h.style.animationDelay=Math.random()*6+"s";
+document.getElementById("bg").appendChild(h);
 }
 
-</script>
+const txt=`Happy Birthday, my (friend 😌). ❤️
 
-</body>
-</html>
+I hope this year brings you endless happiness, beautiful memories, and lots of reasons to smile... other than me. 😀
+
+(Okay... maybe a few because of me too. 😏)
+
+I hope every patient leaves your clinic smiling...
+
+...but don't forget to save one smile just for me. ❤️
+
+I hope you achieve everything you've worked so hard for.
+
+And I hope you find the love of your life...
+
+Then again...
+
+Why look anywhere else when I'm already here? 👈😉❤️
+
+(Relax Doctor...
+that wasn't medical advice...
+or was it? 😏😂)
+
+Happy Birthday once again,
+Dr. Sanyogita.
+
+— Mayur ❤️`;
+
+let done=0,i=0;
+function type(){
+if(done)return;
+done=1;
+let l=document.getElementById("letter");
+(function w(){
+if(i<txt.length){
+l.textContent+=txt[i++];
+setTimeout(w,28);
+}else{
+document.getElementById("next").style.display="inline-block";
+}
+})();
+}
